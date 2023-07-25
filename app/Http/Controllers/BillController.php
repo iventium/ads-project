@@ -64,6 +64,7 @@ class BillController extends Controller
             'campaign' => ['required', 'string'],
             'type' => ['required', 'string'],
             'start_at' => ['date'],
+            'nota' => ['string', 'max:300'],
             'ends_at' => ['date'],
             'days' => ['required', 'numeric'],
             'investment_per_day' => ['required', 'numeric'],
@@ -85,7 +86,7 @@ class BillController extends Controller
      */
     public function show($id)
     {
-        $bill = Bill::with(['clients:id,business,owner'])->find($id);
+        $bill = Bill::with(['clients:id,business,owner,rif,address,phone'])->find($id);
 
         return Inertia::render('Bills/Show', [
             'bill' => new BillResource($bill),
@@ -123,6 +124,7 @@ class BillController extends Controller
             'promotion_link' => ['required', 'string'],
             'campaign' => ['required', 'string'],
             'type' => ['required', 'string'],
+            'nota' => ['string', 'max:300'],
             'start_at' => ['date'],
             'ends_at' => ['date'],
             'days' => ['required', 'numeric'],

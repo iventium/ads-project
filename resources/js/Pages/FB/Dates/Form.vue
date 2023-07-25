@@ -20,7 +20,7 @@
                     @submit.prevent="handlerSave"
                     class="flex flex-col gap-y-8"
                 >
-                    <div class="flex items-center gap-x-5">
+                    <div class="grid grid-cols-3 gap-x-5">
                         <!-- Fecha de inicio -->
                         <div>
                             <jet-label for="start_at" value="Fecha de inicio" />
@@ -28,7 +28,7 @@
                             <jet-input
                                 id="start_at"
                                 type="date"
-                                class="mt-1 block w-[250px]"
+                                class="mt-1 block w-full"
                                 v-model="form.start_at"
                             />
 
@@ -48,7 +48,7 @@
                             <jet-input
                                 id="ends_at"
                                 type="date"
-                                class="mt-1 block w-[250px]"
+                                class="mt-1 block w-full"
                                 v-model="form.ends_at"
                             />
 

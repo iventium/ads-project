@@ -20,58 +20,154 @@
                     @submit.prevent="handlerSave"
                     class="flex flex-col gap-y-8"
                 >
-                    <!-- Nombre empresa -->
-                    <div>
-                        <jet-label
-                            for="business"
-                            value="Nombre de la empresa"
-                        />
+                    <div class="grid grid-cols-3 gap-x-5">
+                        <!-- Nombre empresa -->
+                        <div>
+                            <jet-label
+                                for="business"
+                                value="Nombre de la empresa"
+                            />
 
-                        <jet-input
-                            id="business"
-                            type="text"
-                            class="mt-1 block w-full"
-                            v-model="form.business"
-                        />
+                            <jet-input
+                                id="business"
+                                type="text"
+                                class="mt-1 block w-full"
+                                v-model="form.business"
+                            />
 
-                        <jet-input-error
-                            :message="form.errors.business"
-                            class="mt-2"
-                        />
+                            <jet-input-error
+                                :message="form.errors.business"
+                                class="mt-2"
+                            />
+                        </div>
+
+                        <!-- Nombre propietario -->
+                        <div>
+                            <jet-label
+                                for="owner"
+                                value="Nombre del propietario"
+                            />
+
+                            <jet-input
+                                id="owner"
+                                type="text"
+                                class="mt-1 block w-full"
+                                v-model="form.owner"
+                            />
+
+                            <jet-input-error
+                                :message="form.errors.owner"
+                                class="mt-2"
+                            />
+                        </div>
+
+                        <!-- Numero celular -->
+                        <div>
+                            <jet-label for="phone" value="Número de Teléfono" />
+
+                            <jet-input
+                                id="phone"
+                                type="number"
+                                class="mt-1 block w-full"
+                                v-model="form.phone"
+                            />
+
+                            <jet-input-error
+                                :message="form.errors.phone"
+                                class="mt-2"
+                            />
+                        </div>
                     </div>
 
-                    <!-- Nombre propietario -->
-                    <div>
-                        <jet-label for="owner" value="Nombre del propietario" />
+                    <div class="grid grid-cols-3 gap-x-5">
+                        <!-- RIF -->
+                        <div>
+                            <jet-label for="rif" value="RIF/V" />
 
-                        <jet-input
-                            id="owner"
-                            type="text"
-                            class="mt-1 block w-full"
-                            v-model="form.owner"
-                        />
+                            <jet-input
+                                id="rif"
+                                type="text"
+                                class="mt-1 block w-full"
+                                v-model="form.rif"
+                            />
 
-                        <jet-input-error
-                            :message="form.errors.owner"
-                            class="mt-2"
-                        />
+                            <jet-input-error
+                                :message="form.errors.rif"
+                                class="mt-2"
+                            />
+                        </div>
+
+                        <!-- fecha de ingreso -->
+                        <div>
+                            <jet-label for="entry" value="fecha de ingreso" />
+
+                            <jet-input
+                                id="entry"
+                                type="date"
+                                class="mt-1 block w-full"
+                                v-model="form.entry_at"
+                            />
+
+                            <jet-input-error
+                                :message="form.errors.entry_at"
+                                class="mt-2"
+                            />
+                        </div>
+
+                        <!-- Monto -->
+                        <div>
+                            <jet-label for="balance" value="Monto" />
+
+                            <jet-input
+                                id="balance"
+                                type="number"
+                                step="0.01"
+                                class="mt-1 block w-full"
+                                v-model="form.total"
+                            />
+
+                            <jet-input-error
+                                :message="form.errors.total"
+                                class="mt-2"
+                            />
+                        </div>
                     </div>
 
-                    <!-- Numero celular -->
-                    <div>
-                        <jet-label for="phone" value="Número de Teléfono" />
+                    <div class="grid grid-cols-3 gap-x-5">
+                        <!-- Saldo -->
+                        <div>
+                            <jet-label for="balance" value="Costo Inducción" />
 
-                        <jet-input
-                            id="phone"
-                            type="number"
-                            class="mt-1 block w-full"
-                            v-model="form.phone"
-                        />
+                            <jet-input
+                                id="balance"
+                                type="number"
+                                step="0.01"
+                                class="mt-1 block w-full"
+                                v-model="form.induction"
+                            />
 
-                        <jet-input-error
-                            :message="form.errors.phone"
-                            class="mt-2"
-                        />
+                            <jet-input-error
+                                :message="form.errors.induction"
+                                class="mt-2"
+                            />
+                        </div>
+                        <!-- Saldo -->
+                        <div>
+                            <jet-label for="balance" value="Saldo" />
+
+                            <jet-input
+                                id="balance"
+                                type="number"
+                                step="0.01"
+                                class="mt-1 block w-full"
+                                v-model="form.balance"
+                            />
+
+                            <jet-input-error
+                                :message="form.errors.balance"
+                                class="mt-2"
+                            />
+                        </div>
                     </div>
 
                     <!-- Dirección -->
@@ -87,58 +183,6 @@
 
                         <jet-input-error
                             :message="form.errors.address"
-                            class="mt-2"
-                        />
-                    </div>
-
-                    <!-- RIF -->
-                    <div>
-                        <jet-label for="rif" value="RIF" />
-
-                        <jet-input
-                            id="rif"
-                            type="text"
-                            class="mt-1 block w-full"
-                            v-model="form.rif"
-                        />
-
-                        <jet-input-error
-                            :message="form.errors.rif"
-                            class="mt-2"
-                        />
-                    </div>
-
-                    <!-- fecha de ingreso -->
-                    <div>
-                        <jet-label for="entry" value="fecha de ingreso" />
-
-                        <jet-input
-                            id="entry"
-                            type="date"
-                            class="mt-1 block w-full"
-                            v-model="form.entry_at"
-                        />
-
-                        <jet-input-error
-                            :message="form.errors.entry_at"
-                            class="mt-2"
-                        />
-                    </div>
-
-                    <!-- Saldo -->
-                    <div>
-                        <jet-label for="balance" value="Saldo" />
-
-                        <jet-input
-                            id="balance"
-                            type="number"
-                            step="0.01"
-                            class="mt-1 block w-full"
-                            v-model="form.balance"
-                        />
-
-                        <jet-input-error
-                            :message="form.errors.balance"
                             class="mt-2"
                         />
                     </div>
@@ -196,7 +240,9 @@ export default {
                 address: "",
                 rif: "",
                 entry_at: "",
-                balance: "",
+                balance: null,
+                induction: 0,
+                total: 0,
             }),
         };
     },
@@ -224,6 +270,12 @@ export default {
         },
     },
 
+    watch: {
+        "form.induction"(induction) {
+            this.form.balance = this.form.total - induction;
+        },
+    },
+
     mounted() {
         if (this.edit) {
             this.form.business = this.client.data.business;
@@ -232,6 +284,8 @@ export default {
             this.form.address = this.client.data.address;
             this.form.rif = this.client.data.rif;
             this.form.entry_at = this.client.data.entry_at;
+            this.form.total = this.client.data.total;
+            this.form.induction = this.client.data.induction;
             this.form.balance = this.client.data.balance;
         }
     },

@@ -59,8 +59,10 @@ class ClientController extends Controller
             'owner' => ['required', 'string'],
             'phone' => ['required', 'numeric'],
             'address' => ['required', 'string', 'max:300'],
-            'rif' => ['required', 'numeric'],
+            'rif' => ['required', 'string'],
             'entry_at' => ['required', 'date'],
+            'total' => ['required', 'numeric'],
+            'induction' => ['required', 'numeric'],
             'balance' => ['required', 'numeric'],
         ]);
 
@@ -110,8 +112,10 @@ class ClientController extends Controller
             'owner' => ['required', 'string'],
             'phone' => ['required', 'numeric'],
             'address' => ['required', 'string', 'max:300'],
-            'rif' => ['required', 'numeric'],
+            'rif' => ['required', 'string'],
             'entry_at' => ['required', 'date'],
+            'total' => ['required', 'numeric'],
+            'induction' => ['required', 'numeric'],
             'balance' => ['required', 'numeric'],
         ]);
 

@@ -2,75 +2,78 @@
     <app-layout>
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                <Link :href="route('bills.index')">Facturas</Link>
+                <Link :href="route('bills.index')">Recibos de campañas</Link>
                 <span class="mx-3">&gt;</span>
-                <span class="text-gray-500" v-if="edit">Editar Factura</span>
-                <span class="text-gray-500" v-else>Agregar Factura</span>
+                <span class="text-gray-500" v-if="edit"
+                    >Editar recibo de campaña</span
+                >
+                <span class="text-gray-500" v-else
+                    >Agregar recibo de campaña</span
+                >
             </h2>
         </template>
         <container>
             <card class="p-8">
                 <h3 class="font-medium text-3xl mb-8" v-if="edit">
-                    Editar Factura
+                    Editar recibo de campaña
                 </h3>
                 <h3 class="font-medium text-3xl mb-8" v-else>
-                    Registrar Factura
+                    Editar recibo de campaña
                 </h3>
                 <form
                     @submit.prevent="handlerSave"
                     class="flex flex-col gap-y-8"
                 >
-                    <!-- Nombre empresa -->
-                    <div>
-                        <jet-label
-                            for="business"
-                            value="Nombre de la empresa"
-                        />
+                    <div class="grid grid-cols-3 gap-x-5">
+                        <!-- Nombre empresa -->
+                        <div>
+                            <jet-label
+                                for="business"
+                                value="Nombre de la empresa"
+                            />
 
-                        <select
-                            name="business"
-                            id="client_id"
-                            class="block w-full border-gray-300 focus:border-purple-300 focus:ring focus:ring-purple-200 focus:ring-opacity-50 rounded-md shadow-sm"
-                            v-model="form.client_id"
-                        >
-                            <option value="">Seleccionar Empresa</option>
-
-                            <option
-                                v-for="client in clients.data"
-                                :key="client.id"
-                                :value="client.id"
+                            <select
+                                name="business"
+                                id="client_id"
+                                class="block w-full border-gray-300 focus:border-purple-300 focus:ring focus:ring-purple-200 focus:ring-opacity-50 rounded-md shadow-sm"
+                                v-model="form.client_id"
                             >
-                                {{ client.business }}
-                            </option>
+                                <option value="">Seleccionar Empresa</option>
+
+                                <option
+                                    v-for="client in clients.data"
+                                    :key="client.id"
+                                    :value="client.id"
+                                >
+                                    {{ client.business }}
+                                </option>
+
+                                <jet-input-error
+                                    :message="form.errors.client_id"
+                                    class="mt-2"
+                                />
+                            </select>
+                        </div>
+
+                        <!-- Link Promoción -->
+                        <div>
+                            <jet-label
+                                for="promotion_link"
+                                value="Link de la Promoción"
+                            />
+
+                            <jet-input
+                                id="promotion_link"
+                                type="text"
+                                class="block w-full"
+                                v-model="form.promotion_link"
+                            />
 
                             <jet-input-error
-                                :message="form.errors.client_id"
+                                :message="form.errors.promotion_link"
                                 class="mt-2"
                             />
-                        </select>
-                    </div>
-
-                    <!-- Link Promoción -->
-                    <div>
-                        <jet-label
-                            for="promotion_link"
-                            value="Link de la Promoción"
-                        />
-
-                        <jet-input
-                            id="promotion_link"
-                            type="text"
-                            class="mt-1 block w-full"
-                            v-model="form.promotion_link"
-                        />
-
-                        <jet-input-error
-                            :message="form.errors.promotion_link"
-                            class="mt-2"
-                        />
-                    </div>
-
-                    <div class="flex items-center gap-x-5">
+                        </div>
                         <!-- Campañas -->
                         <div>
                             <jet-label for="campaign" value="Campaña" />
@@ -78,7 +81,7 @@
                             <jet-input
                                 id="campaign"
                                 type="text"
-                                class="mt-1 block w-[420px]"
+                                class="block w-full"
                                 v-model="form.campaign"
                             />
 
@@ -87,7 +90,9 @@
                                 class="mt-2"
                             />
                         </div>
+                    </div>
 
+                    <div class="grid grid-cols-3 gap-x-5">
                         <!-- Tipo -->
                         <div>
                             <jet-label for="type" value="Tipo de campaña" />
@@ -95,7 +100,7 @@
                             <select
                                 name="type"
                                 id="type"
-                                class="block w-[250px] border-gray-300 focus:border-purple-300 focus:ring focus:ring-purple-200 focus:ring-opacity-50 rounded-md shadow-sm"
+                                class="block w-full border-gray-300 focus:border-purple-300 focus:ring focus:ring-purple-200 focus:ring-opacity-50 rounded-md shadow-sm"
                                 v-model="form.type"
                             >
                                 <option value="">Seleccionar Tipo</option>
@@ -110,9 +115,6 @@
                                 />
                             </select>
                         </div>
-                    </div>
-
-                    <div class="flex items-center gap-x-5">
                         <!-- Fecha de inicio -->
                         <div>
                             <jet-label for="start_at" value="Fecha de inicio" />
@@ -120,7 +122,7 @@
                             <jet-input
                                 id="start_at"
                                 type="date"
-                                class="mt-1 block w-[250px]"
+                                class="block w-full"
                                 v-model="form.start_at"
                             />
 
@@ -140,7 +142,7 @@
                             <jet-input
                                 id="ends_at"
                                 type="date"
-                                class="mt-1 block w-[250px]"
+                                class="block w-full"
                                 v-model="form.ends_at"
                             />
 
@@ -152,14 +154,14 @@
                     </div>
 
                     <!-- Dias e inversion por dia-->
-                    <div class="flex items-center gap-x-5">
+                    <div class="grid grid-cols-3 gap-x-5">
                         <div>
                             <jet-label for="days" value="Dias de promoción" />
 
                             <jet-input
                                 id="days"
                                 type="number"
-                                class="mt-1 block w-full"
+                                class="block w-full"
                                 v-model="form.days"
                             />
 
@@ -178,7 +180,7 @@
                                 id="investment_per_day"
                                 type="number"
                                 step="0.01"
-                                class="mt-1 block w-full"
+                                class="block w-full"
                                 v-model="form.investment_per_day"
                             />
 
@@ -194,7 +196,7 @@
                                 id="invoiced"
                                 type="number"
                                 step="0.01"
-                                class="mt-1 block w-full"
+                                class="block w-full"
                                 v-model="form.invoiced"
                             />
 
@@ -207,7 +209,7 @@
 
                     <!-- Porcentaje de comisión -->
                     <div>
-                        <div class="flex items-center gap-x-5">
+                        <div class="grid grid-cols-3 gap-x-5">
                             <div>
                                 <jet-label
                                     for="commission"
@@ -216,6 +218,7 @@
                                 <jet-input
                                     type="number"
                                     :value="commissionValue"
+                                    class="block w-full"
                                     v-model="commissionValue"
                                 />
 
@@ -236,7 +239,7 @@
                                     id="commission"
                                     type="number"
                                     step="0.01"
-                                    class="mt-1 block w-full"
+                                    class="block w-full"
                                     v-model="form.commission"
                                 />
 
@@ -257,7 +260,7 @@
                                     id="total"
                                     type="number"
                                     step="0.01"
-                                    class="mt-1 block w-full"
+                                    class="block w-full"
                                     v-model="form.total"
                                 />
 
@@ -266,6 +269,22 @@
                                     class="mt-2"
                                 />
                             </div>
+                        </div>
+                        <!-- Nota -->
+                        <div class="mt-5">
+                            <jet-label for="nota" value="Nota" />
+
+                            <textarea
+                                id="nota"
+                                type="text"
+                                class="mt-1 w-full border-gray-300 focus:border-purple-300 focus:ring focus:ring-purple-200 focus:ring-opacity-50 rounded-md shadow-sm"
+                                v-model="form.nota"
+                            />
+
+                            <jet-input-error
+                                :message="form.errors.nota"
+                                class="mt-2"
+                            />
                         </div>
                     </div>
 
@@ -327,6 +346,7 @@ export default {
                 promotion_link: "",
                 campaign: "",
                 type: "",
+                nota: "",
                 start_at: "",
                 ends_at: "",
                 days: "",
@@ -382,6 +402,7 @@ export default {
             this.form.promotion_link = this.bill.data.promotion_link;
             this.form.campaign = this.bill.data.campaign;
             this.form.type = this.bill.data.type;
+            this.form.nota = this.bill.data.nota;
             this.form.start_at = this.bill.data.start_at;
             this.form.ends_at = this.bill.data.ends_at;
             this.form.days = this.bill.data.days;

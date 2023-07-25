@@ -21,7 +21,7 @@
                     class="flex flex-col gap-y-8"
                 >
                     <!-- Nombre empresa -->
-                    <div class="flex items-center gap-x-5">
+                    <div class="grid grid-cols-3 gap-x-5">
                         <div>
                             <jet-label
                                 for="business"
@@ -31,7 +31,7 @@
                             <select
                                 name="business"
                                 id="client_id"
-                                class="block w-[300px] border-gray-300 focus:border-purple-300 focus:ring focus:ring-purple-200 focus:ring-opacity-50 rounded-md shadow-sm"
+                                class="block w-full border-gray-300 focus:border-purple-300 focus:ring focus:ring-purple-200 focus:ring-opacity-50 rounded-md shadow-sm"
                                 @change="handleChange($event)"
                                 v-model="form.client_id"
                             >
@@ -58,13 +58,17 @@
                             <select
                                 name="bank"
                                 id="bank"
-                                class="block w-[250px] border-gray-300 focus:border-purple-300 focus:ring focus:ring-purple-200 focus:ring-opacity-50 rounded-md shadow-sm"
+                                class="block w-full border-gray-300 focus:border-purple-300 focus:ring focus:ring-purple-200 focus:ring-opacity-50 rounded-md shadow-sm"
                                 v-model="form.bank"
                             >
                                 <option value="">Seleccionar Banco</option>
 
                                 <option value="Mercantil">Mercantil</option>
-                                <option value="Zelle">Zelle</option>
+                                <option value="Banesco">Banesco</option>
+                                <option value="Bank of America">
+                                    Bank of America
+                                </option>
+                                <option value="Wells Fargo">Wells Fargo</option>
 
                                 <jet-input-error
                                     :message="form.errors.bank"
@@ -82,7 +86,7 @@
                             <jet-input
                                 id="date"
                                 type="date"
-                                class="mt-1 block w-[170px]"
+                                class="mt-1 block w-full"
                                 v-model="form.date"
                             />
 
@@ -91,7 +95,9 @@
                                 class="mt-2"
                             />
                         </div>
+                    </div>
 
+                    <div class="grid grid-cols-4 gap-x-5">
                         <!-- Referencia -->
                         <div>
                             <jet-label
@@ -111,9 +117,6 @@
                                 class="mt-2"
                             />
                         </div>
-                    </div>
-
-                    <div class="flex items-center gap-x-5">
                         <!-- pago -->
                         <div>
                             <jet-label for="payment" value="Pago" />
@@ -121,6 +124,7 @@
                             <jet-input
                                 id="payment"
                                 type="number"
+                                step="0.01"
                                 class="mt-1 block w-full"
                                 v-model="form.payment"
                             />
@@ -314,7 +318,7 @@ export default {
                 bank: "",
                 date: "",
                 reference: "",
-                rate: 0,
+                rate: null,
                 total: "",
                 comments: "Sin comentarios",
             }),
@@ -360,10 +364,10 @@ export default {
             let currentBalance = this.clients.data.find(
                 (item) => item.id == event.target.value
             );
-            console.log(
-                "🚀 ~ file: Form.vue ~ line 288 ~ handleChange ~ currentBalance",
-                currentBalance.balance
-            );
+            // console.log(
+            //     "🚀 ~ file: Form.vue ~ line 288 ~ handleChange ~ currentBalance",
+            //     currentBalance.balance
+            // );
 
             // let first = currentBalance.length > 0 ? currentBalance[0] : null;
 

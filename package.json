@@ -21,6 +21,6 @@
         "vue": "^3.2.31"
     },
     "dependencies": {
-        "pdfmake": "^0.2.6"
+        "pdfmake": "^0.2.7"
     }
 }

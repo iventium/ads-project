@@ -82,7 +82,7 @@ class RefillController extends Controller
      */
     public function show($id)
     {
-        $bill = Refill::with(['clients:id,business,owner,rif,address'])->find($id);
+        $bill = Refill::with(['clients:id,business,owner,rif,address,phone'])->find($id);
 
         return Inertia::render('Refills/Show', [
             'refill' => new RefillResource($bill),

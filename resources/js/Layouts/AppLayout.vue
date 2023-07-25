@@ -68,16 +68,16 @@ const logout = () => {
                                     Clientes
                                 </NavLink>
                                 <NavLink
-                                    :href="route('bills.index')"
-                                    :active="route().current('bills.index')"
-                                >
-                                    Facturas
-                                </NavLink>
-                                <NavLink
                                     :href="route('refills.index')"
                                     :active="route().current('refills.index')"
                                 >
-                                    Recargas
+                                    Recibo de recargas
+                                </NavLink>
+                                <NavLink
+                                    :href="route('bills.index')"
+                                    :active="route().current('bills.index')"
+                                >
+                                    Recibos de campañas
                                 </NavLink>
                                 <NavLink
                                     :href="route('fbDates.index')"

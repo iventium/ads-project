@@ -15,7 +15,7 @@
                 <form @submit.prevent="submit" method="get" class="w-1/2">
                     <div class="relative">
                         <search-input
-                            placeholder="Buscar"
+                            placeholder="Buscar nombre de la empresa"
                             type="text"
                             class="w-full"
                             v-model="form.name"

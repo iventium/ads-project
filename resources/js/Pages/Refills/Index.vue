@@ -12,10 +12,10 @@
                     >Registrar Recarga</jet-button
                 >
 
-                <!-- <form @submit.prevent="submit" method="get" class="w-1/2">
+                <form @submit.prevent="submit" method="get" class="w-1/2">
                     <div class="relative">
                         <search-input
-                            placeholder="Buscar"
+                            placeholder="Buscar id del cliente"
                             type="text"
                             class="w-full"
                             v-model="form.name"
@@ -37,7 +37,7 @@
                             </svg>
                         </button>
                     </div>
-                </form> -->
+                </form>
             </div>
 
             <card>
@@ -63,6 +63,13 @@
                                 <show-button
                                     :url="
                                         route('refills.show', {
+                                            refill: refill.id,
+                                        })
+                                    "
+                                />
+                                <edit-button
+                                    :url="
+                                        route('refills.edit', {
                                             refill: refill.id,
                                         })
                                     "

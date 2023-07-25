@@ -86,7 +86,7 @@
 
                                         <span
                                             class="font-medium text-purple-600 hover:text-purple-500"
-                                            >Ver Facturas</span
+                                            >Ver Registro de Recargas</span
                                         >
                                     </button>
                                 </form>

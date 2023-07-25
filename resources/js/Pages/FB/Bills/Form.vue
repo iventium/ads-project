@@ -20,14 +20,14 @@
                     @submit.prevent="handlerSave"
                     class="flex flex-col gap-y-8"
                 >
-                    <div class="flex items-center gap-x-5 w-full">
+                    <div class="grid grid-cols-3 gap-x-5 w-full">
                         <div>
                             <jet-label for="date" value="Intervalo de fecha" />
 
                             <select
                                 name="date"
                                 id="date_id"
-                                class="block w-[250px] border-gray-300 focus:border-purple-300 focus:ring focus:ring-purple-200 focus:ring-opacity-50 rounded-md shadow-sm"
+                                class="block w-full border-gray-300 focus:border-purple-300 focus:ring focus:ring-purple-200 focus:ring-opacity-50 rounded-md shadow-sm"
                                 v-model="form.date_id"
                             >
                                 <option value="">Seleccionar Fecha</option>
@@ -53,7 +53,7 @@
                             <select
                                 name="business"
                                 id="business_id"
-                                class="block w-[250px] border-gray-300 focus:border-purple-300 focus:ring focus:ring-purple-200 focus:ring-opacity-50 rounded-md shadow-sm"
+                                class="block w-full border-gray-300 focus:border-purple-300 focus:ring focus:ring-purple-200 focus:ring-opacity-50 rounded-md shadow-sm"
                                 @change="handleChange($event)"
                                 v-model="form.client_id"
                             >
@@ -80,7 +80,7 @@
                             <jet-input
                                 id="campaign"
                                 type="text"
-                                class="mt-1 w-[400px]"
+                                class="mt-1 w-full"
                                 v-model="form.campaign"
                             />
 
@@ -91,7 +91,7 @@
                         </div>
                     </div>
 
-                    <div class="flex items-center gap-x-5 w-full">
+                    <div class="grid grid-cols-4 gap-x-5">
                         <!-- Importe facturado -->
                         <div>
                             <jet-label
@@ -123,6 +123,7 @@
                                 type="number"
                                 :value="commissionValue"
                                 v-model="commissionValue"
+                                class="mt-1 block w-full"
                             />
                         </div>
 

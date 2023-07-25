@@ -2,20 +2,20 @@
     <app-layout title="bills">
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                Facturas
+                Recibo de campañas
             </h2>
         </template>
 
         <container>
             <div class="flex justify-between">
                 <jet-button :href="route('bills.create')"
-                    >Registrar Factura</jet-button
+                    >Registrar Campaña</jet-button
                 >
 
-                <!-- <form @submit.prevent="submit" method="get" class="w-1/2">
+                <form @submit.prevent="submit" method="get" class="w-1/2">
                     <div class="relative">
                         <search-input
-                            placeholder="Buscar"
+                            placeholder="Buscar link de promoción"
                             type="text"
                             class="w-full"
                             v-model="form.name"
@@ -37,7 +37,7 @@
                             </svg>
                         </button>
                     </div>
-                </form> -->
+                </form>
             </div>
 
             <card>

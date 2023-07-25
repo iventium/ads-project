@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('promotion_link');
             $table->string('campaign');
             $table->string('type');
+            $table->text('nota');
             $table->date('start_at')->nullable();
             $table->date('ends_at')->nullable();
             $table->integer('days');

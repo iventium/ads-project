@@ -26,6 +26,7 @@ class BillResource extends JsonResource
             'invoiced' => $this->invoiced,
             'commission' => $this->commission,
             'total' => $this->total,
+            'nota' => $this->nota,
             'client_id' => $this->when($this->client_id, $this->client_id),
             'clients' => new BillClientResource($this->whenLoaded('clients')),
         ];

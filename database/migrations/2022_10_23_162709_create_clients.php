@@ -19,8 +19,10 @@ return new class extends Migration
             $table->string('owner');
             $table->bigInteger('phone');
             $table->text('address');
-            $table->integer('rif');
+            $table->string('document');
             $table->date('entry_at');
+            $table->decimal('total', $precision = 6, $scale = 2);
+            $table->decimal('induction', $precision = 6, $scale = 2);
             $table->decimal('balance', $precision = 6, $scale = 2);
             $table->timestamps();
         });
